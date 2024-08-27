@@ -24,6 +24,7 @@ const SongList = () => {
     const fetchSongs = async () => {
         try {
             const response = await axios.get<Song[]>('/api/songs');
+            console.log("API Response:", response.data);
             setSongs(response.data);
         } catch (error) {
             console.error("Error fetching songs:", error);
@@ -147,7 +148,7 @@ const SongList = () => {
                     </tr>
                 </thead>
                 <tbody className="bg-white divide-y divide-gray-200">
-                    {songs.map((song) => (
+                    {(Array.isArray(songs) && songs.length > 0) ? songs.map((song) => (
                         <tr key={song._id}>
                             <td className="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-900">{song.title}</td>
                             <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-500">{song.artist}</td>
@@ -163,7 +164,9 @@ const SongList = () => {
                                 </button>
                             </td>
                         </tr>
-                    ))}
+                    )) : (<tr>
+                        <td colSpan={5} className='px-6 py-4 whitespace-nowrap text-sm font-medium'>No songs available</td>
+                    </tr>)}
                 </tbody>
             </table>
         </div>
