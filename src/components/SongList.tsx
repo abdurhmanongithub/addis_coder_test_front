@@ -23,7 +23,7 @@ const SongList = () => {
 
     const fetchSongs = async () => {
         try {
-            const response = await axios.get<Song[]>('/api/songs');
+            const response = await axios.get<Song[]>('https://song-back.onrender.com/api/songs');
             console.log("API Response:", response.data);
             setSongs(response.data);
         } catch (error) {
