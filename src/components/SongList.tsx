@@ -41,8 +41,9 @@ const SongList = () => {
     };
 
     return (
-        <div className="p-6 max-w-4xl mx-auto bg-white rounded-lg shadow-md">
+        <div className="p-6 mx-auto bg-white rounded-lg shadow-md">
             <h2 className="text-2xl font-bold mb-4">Song List</h2>
+            <span className="block">by Abdurhman Abrar</span>
             {alertMessage && (
                 <div className={`mb-4 p-3 text-white ${alertType === 'success' ? 'bg-green-500' : 'bg-red-500'} rounded`}>
                     {alertMessage}
